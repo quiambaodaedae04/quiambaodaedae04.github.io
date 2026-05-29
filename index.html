@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danielle Quiambao — Data Wrangler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">danielle<span>.quiambao</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="status">
+    <span class="dot"></span>
+    Available for work
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Data Wrangler & Pipeline Engineer</div>
+
+    <h1>
+      Turning <span class="accent">messy data</span><br>
+      into <span class="dim">clean signals.</span>
+    </h1>
+
+    <p class="hero-desc">
+      I wrangle, transform, and pipeline data so analysts and ML engineers
+      can focus on what matters. <strong>Python, SQL, and Pandas</strong> are my tools —
+      reproducibility and documentation are my religion.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">▶ View Projects</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Datasets cleaned</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Pipelines built</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMINAL WIDGET -->
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="tbar-dot"></div>
+      <div class="tbar-dot"></div>
+      <div class="tbar-dot"></div>
+      <span class="tbar-title">pipeline.py</span>
+    </div>
+    <div class="terminal-body" id="terminal-output">
+      <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> python pipeline.py --input raw.csv</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label"><span>01</span> Capabilities</div>
+  <h2>The full stack<br>of data wrangling.</h2>
+
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <span class="skill-icon">⚙️</span>
+      <div class="skill-name">Data Cleaning</div>
+      <div style="font-size:.75rem;color:var(--muted);">Handling nulls, outliers, duplicates, type coercion, and schema normalization across structured and semi-structured data.</div>
+      <div class="skill-tags">
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag amber">Great Expectations</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🔗</span>
+      <div class="skill-name">ETL Pipelines</div>
+      <div style="font-size:.75rem;color:var(--muted);">Building robust Extract-Transform-Load workflows that run reliably on schedule with full logging and error recovery.</div>
+      <div class="skill-tags">
+        <span class="tag">Apache Airflow</span>
+        <span class="tag amber">dbt</span>
+        <span class="tag blue">Prefect</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🗄️</span>
+      <div class="skill-name">SQL & Databases</div>
+      <div style="font-size:.75rem;color:var(--muted);">Complex joins, window functions, CTEs, query optimization, and database schema design for analytical workloads.</div>
+      <div class="skill-tags">
+        <span class="tag amber">PostgreSQL</span>
+        <span class="tag">BigQuery</span>
+        <span class="tag blue">duckDB</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🌐</span>
+      <div class="skill-name">API & Web Data</div>
+      <div style="font-size:.75rem;color:var(--muted);">Pulling, paginating, and normalizing data from REST APIs, JSON feeds, and HTML scraping into analysis-ready tables.</div>
+      <div class="skill-tags">
+        <span class="tag">requests</span>
+        <span class="tag">BeautifulSoup</span>
+        <span class="tag amber">Scrapy</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">📊</span>
+      <div class="skill-name">Data Validation</div>
+      <div style="font-size:.75rem;color:var(--muted);">Writing schema contracts, freshness checks, and assertion-based tests to catch data quality issues before they reach production.</div>
+      <div class="skill-tags">
+        <span class="tag">Pandera</span>
+        <span class="tag amber">dbt tests</span>
+        <span class="tag blue">Pydantic</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">☁️</span>
+      <div class="skill-name">Cloud & Storage</div>
+      <div style="font-size:.75rem;color:var(--muted);">Working with cloud data stores, object storage, and lakehouse formats for scalable, cost-efficient data management.</div>
+      <div class="skill-tags">
+        <span class="tag">AWS S3</span>
+        <span class="tag amber">Parquet</span>
+        <span class="tag blue">Snowflake</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label"><span>02</span> Selected Work</div>
+  <h2>Projects that<br>shipped clean data.</h2>
+
+  <div class="projects-list reveal">
+    <a href="#" class="project-row">
+      <div class="proj-num">01</div>
+      <div class="proj-info">
+        <div class="proj-title">E-Commerce Transaction Cleaner</div>
+        <div class="proj-desc">Automated pipeline that deduplicates, standardizes currency fields, and validates 2M+ monthly transactions from 5 regional storefronts into a unified schema.</div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-lang">Python · SQL · Airflow</span>
+        <span class="proj-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="#" class="project-row">
+      <div class="proj-num">02</div>
+      <div class="proj-info">
+        <div class="proj-title">Healthcare Claims Normalization</div>
+        <div class="proj-desc">Wrangled messy ICD-10 billing data from 3 incompatible EHR systems into a single flat file with 99.4% field coverage and zero PII leakage.</div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-lang">Pandas · dbt · PostgreSQL</span>
+        <span class="proj-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="#" class="project-row">
+      <div class="proj-num">03</div>
+      <div class="proj-info">
+        <div class="proj-title">Real-Time Sensor Feed Pipeline</div>
+        <div class="proj-desc">Ingested, validated, and stored 50k IoT sensor readings per minute from greenhouse environments with anomaly flagging and automated alerting.</div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-lang">Kafka · Python · BigQuery</span>
+        <span class="proj-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="#" class="project-row">
+      <div class="proj-num">04</div>
+      <div class="proj-info">
+        <div class="proj-title">Public Dataset Benchmark Suite</div>
+        <div class="proj-desc">Open-source collection of 15 real-world dirty datasets with accompanying cleaning scripts, documented transformations, and quality metrics for learning and benchmarking.</div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-lang">Python · Jupyter · GitHub</span>
+        <span class="proj-arrow">→</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label"><span>03</span> Experience</div>
+  <h2>Where I've<br>done the work.</h2>
+
+  <div class="exp-timeline reveal">
+    <div class="exp-item">
+      <div class="exp-period">2022 — Present</div>
+      <div class="exp-role">Data Wrangler & Pipeline Engineer</div>
+      <div class="exp-company">DataCo Analytics · Full-time</div>
+      <ul class="exp-bullets">
+        <li>Built and maintained 8 production ETL pipelines processing 15M+ records daily with 99.9% uptime</li>
+        <li>Reduced data ingestion errors by 73% by introducing schema validation with Great Expectations</li>
+        <li>Standardized data cleaning playbooks across 4 team members, cutting onboarding time in half</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">2021 — 2022</div>
+      <div class="exp-role">Junior Data Analyst</div>
+      <div class="exp-company">Insights Lab · Full-time</div>
+      <ul class="exp-bullets">
+        <li>Cleaned and transformed ad performance datasets from 12 marketing platforms into unified dashboards</li>
+        <li>Wrote reusable SQL queries that cut analyst report generation time from 4 hours to 20 minutes</li>
+        <li>Documented all data sources, transformation logic, and known quality issues in a shared data dictionary</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">2020 — 2021</div>
+      <div class="exp-role">Data Engineering Intern</div>
+      <div class="exp-company">Startup · Internship</div>
+      <ul class="exp-bullets">
+        <li>Scraped and cleaned 500k product listings from 6 e-commerce sites for competitor price analysis</li>
+        <li>Built first automated CSV-to-database ingestion script that is still used in production today</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center;"><span>04</span> Contact</div>
+    <h2>Let's work<br>on clean data together.</h2>
+    <p style="color:var(--muted);font-size:.8rem;margin-bottom:1rem;">I'm currently open to full-time roles and freelance data wrangling contracts.</p>
+    <a href="mailto:quiambaodaedae04@gmail.com" class="contact-email">
+      ✉ quiambaodaedae04@gmail.com
+    </a>
+    <div class="social-links">
+      <a href="#" class="social-link">⌥ GitHub</a>
+      <a href="#" class="social-link">↗ LinkedIn</a>
+      <a href="#" class="social-link">↓ Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Danielle Quiambao</span>
+  <span>Built with HTML · CSS · JS</span>
+  <span style="color:var(--green);">Available for work ●</span>
+</footer>
+
+<script>
+  // ── TERMINAL TYPEWRITER ──
+  const lines = [
+    { type: 'out', text: '→ Loading raw.csv (2.4M rows)...', cls: '' },
+    { type: 'out', text: '→ Detected 14,302 null values', cls: 'highlight' },
+    { type: 'out', text: '→ Found 891 duplicate rows', cls: 'highlight' },
+    { type: 'out', text: '→ Normalizing date formats...', cls: '' },
+    { type: 'out', text: '→ Standardizing currency fields...', cls: '' },
+    { type: 'out', text: '→ Running schema validation...', cls: '' },
+    { type: 'out', text: '✓ All 47 checks passed', cls: 'success' },
+    { type: 'out', text: '→ Exporting clean_output.parquet', cls: '' },
+    { type: 'out', text: '✓ Done. 2,385,107 rows ready.', cls: 'success' },
+    { type: 'prompt', text: '' },
+  ];
+
+  const terminalEl = document.getElementById('terminal-output');
+  let lineIdx = 0;
+
+  function addLine(line) {
+    const div = document.createElement('div');
+    div.className = 't-line';
+    if (line.type === 'prompt') {
+      div.innerHTML = `<span class="t-prompt">$</span><span class="t-cursor"></span>`;
+    } else {
+      div.innerHTML = `<span class="t-out ${line.cls}">${line.text}</span>`;
+    }
+    terminalEl.appendChild(div);
+    terminalEl.scrollTop = terminalEl.scrollHeight;
+  }
+
+  function runTerminal() {
+    if (lineIdx >= lines.length) return;
+    addLine(lines[lineIdx]);
+    lineIdx++;
+    const delay = lines[lineIdx - 1].cls === 'success' ? 600 : Math.random() * 300 + 120;
+    setTimeout(runTerminal, delay);
+  }
+
+  setTimeout(runTerminal, 1800);
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
