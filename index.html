@@ -414,55 +414,148 @@
   /* ── PROJECTS ── */
   #projects { background: var(--bg); }
 
-  .projects-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); }
-
-  .project-row {
+  .projects-grid {
     display: grid;
-    grid-template-columns: 3rem 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.75rem 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
     background: var(--surface);
-    transition: background .2s, transform .15s;
-    cursor: pointer;
     text-decoration: none;
     color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background .2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:hover { background: #111820; }
+
+  /* image container */
+  .proj-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #0a1018;
     border-bottom: 1px solid var(--border);
   }
 
-  .project-row:last-child { border-bottom: none; }
-  .project-row:hover { background: #111820; transform: translateX(4px); }
-
-  .proj-num {
-    font-size: .65rem;
-    color: var(--muted);
-    letter-spacing: .1em;
+  .proj-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease, filter .4s ease;
+    filter: saturate(.7) brightness(.9);
   }
 
-  .proj-info {}
+  .project-card:hover .proj-img-wrap img {
+    transform: scale(1.04);
+    filter: saturate(1) brightness(1);
+  }
+
+  /* placeholder shown when no real image */
+  .proj-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: .75rem;
+    background: repeating-linear-gradient(
+      45deg,
+      #0a1018,
+      #0a1018 10px,
+      #0c1420 10px,
+      #0c1420 20px
+    );
+    transition: opacity .3s;
+  }
+
+  .project-card:hover .proj-img-placeholder { opacity: .7; }
+
+  .placeholder-icon { font-size: 2rem; opacity: .3; }
+
+  .placeholder-label {
+    font-size: .6rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: .5;
+  }
+
+  /* green scan line overlay on hover */
+  .proj-img-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0,229,160,.06) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+  }
+
+  .project-card:hover .proj-img-wrap::after { opacity: 1; }
+
+  /* overlay badge top-right */
+  .proj-num-badge {
+    position: absolute;
+    top: .75rem; right: .75rem;
+    font-size: .6rem;
+    letter-spacing: .12em;
+    color: var(--green);
+    background: rgba(8,11,15,.85);
+    border: 1px solid var(--green-dim);
+    padding: .25rem .55rem;
+    border-radius: 2px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* card body */
+  .proj-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
   .proj-title {
     font-family: var(--sans);
     font-size: 1rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: .3rem;
+    margin-bottom: .5rem;
+    transition: color .2s;
   }
+
+  .project-card:hover .proj-title { color: var(--green); }
 
   .proj-desc {
     font-size: .75rem;
     color: var(--muted);
-    max-width: 600px;
+    line-height: 1.7;
+    flex: 1;
   }
 
-  .proj-meta {
-    display: flex; flex-direction: column; align-items: flex-end; gap: .5rem;
+  .proj-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
   }
 
   .proj-lang {
-    font-size: .65rem;
+    font-size: .6rem;
     color: var(--amber);
     letter-spacing: .08em;
-    white-space: nowrap;
   }
 
   .proj-arrow {
@@ -471,10 +564,22 @@
     transition: color .2s, transform .2s;
   }
 
-  .project-row:hover .proj-arrow {
+  .project-card:hover .proj-arrow {
     color: var(--green);
     transform: translateX(4px);
   }
+
+  /* ── IMAGE INSTRUCTIONS NOTE (remove in production) ── */
+  .img-note {
+    font-size: .65rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding: .75rem 1rem;
+    border: 1px dashed var(--border);
+    border-radius: 2px;
+    line-height: 1.8;
+  }
+  .img-note strong { color: var(--amber); }
 
   /* ── EXPERIENCE ── */
   #experience { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -612,6 +717,7 @@
     section { padding: 4rem 1.5rem; }
     .stats-row { gap: 1.5rem; }
     footer { flex-direction: column; gap: .5rem; text-align: center; }
+    .projects-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -638,7 +744,7 @@
   <div class="hero-glow"></div>
 
   <div class="hero-content">
-    <div class="hero-tag">Data Wrangler</div>
+    <div class="hero-tag">Data Wrangler & Pipeline Engineer</div>
 
     <h1>
       Turning <span class="accent">messy data</span><br>
@@ -760,54 +866,106 @@
   <div class="section-label"><span>02</span> Selected Work</div>
   <h2>Projects that<br>shipped clean data.</h2>
 
-  <div class="projects-list reveal">
-    <a href="#" class="project-row">
-      <div class="proj-num">01</div>
-      <div class="proj-info">
+  <p class="img-note">
+    <strong>📁 How to add your images:</strong> Place your screenshots in an <code>images/</code> folder next to this file.
+    Then replace each <code>src="images/project-1.png"</code> with your actual filename.
+    Recommended size: <strong>1280×720px</strong> (16:9). Remove this note before publishing.
+  </p>
+
+  <div class="projects-grid reveal">
+
+    <!-- PROJECT 1 -->
+    <a href="#" class="project-card">
+      <div class="proj-img-wrap">
+        <!-- ✏️ Replace src with your image: src="images/project-1.png" -->
+        <img src="images/project-1.png"
+             alt="E-Commerce Transaction Cleaner screenshot"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="proj-img-placeholder" style="display:none">
+          <span class="placeholder-icon">🛒</span>
+          <span class="placeholder-label">project-1.png</span>
+        </div>
+        <span class="proj-num-badge">01</span>
+      </div>
+      <div class="proj-body">
         <div class="proj-title">E-Commerce Transaction Cleaner</div>
         <div class="proj-desc">Automated pipeline that deduplicates, standardizes currency fields, and validates 2M+ monthly transactions from 5 regional storefronts into a unified schema.</div>
-      </div>
-      <div class="proj-meta">
-        <span class="proj-lang">Python · SQL · Airflow</span>
-        <span class="proj-arrow">→</span>
+        <div class="proj-footer">
+          <span class="proj-lang">Python · SQL · Airflow</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
     </a>
 
-    <a href="#" class="project-row">
-      <div class="proj-num">02</div>
-      <div class="proj-info">
+    <!-- PROJECT 2 -->
+    <a href="#" class="project-card">
+      <div class="proj-img-wrap">
+        <!-- ✏️ Replace src with your image: src="images/project-2.png" -->
+        <img src="images/project-2.png"
+             alt="Healthcare Claims Normalization screenshot"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="proj-img-placeholder" style="display:none">
+          <span class="placeholder-icon">🏥</span>
+          <span class="placeholder-label">project-2.png</span>
+        </div>
+        <span class="proj-num-badge">02</span>
+      </div>
+      <div class="proj-body">
         <div class="proj-title">Healthcare Claims Normalization</div>
         <div class="proj-desc">Wrangled messy ICD-10 billing data from 3 incompatible EHR systems into a single flat file with 99.4% field coverage and zero PII leakage.</div>
-      </div>
-      <div class="proj-meta">
-        <span class="proj-lang">Pandas · dbt · PostgreSQL</span>
-        <span class="proj-arrow">→</span>
+        <div class="proj-footer">
+          <span class="proj-lang">Pandas · dbt · PostgreSQL</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
     </a>
 
-    <a href="#" class="project-row">
-      <div class="proj-num">03</div>
-      <div class="proj-info">
+    <!-- PROJECT 3 -->
+    <a href="#" class="project-card">
+      <div class="proj-img-wrap">
+        <!-- ✏️ Replace src with your image: src="images/project-3.png" -->
+        <img src="images/project-3.png"
+             alt="Real-Time Sensor Feed Pipeline screenshot"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="proj-img-placeholder" style="display:none">
+          <span class="placeholder-icon">📡</span>
+          <span class="placeholder-label">project-3.png</span>
+        </div>
+        <span class="proj-num-badge">03</span>
+      </div>
+      <div class="proj-body">
         <div class="proj-title">Real-Time Sensor Feed Pipeline</div>
         <div class="proj-desc">Ingested, validated, and stored 50k IoT sensor readings per minute from greenhouse environments with anomaly flagging and automated alerting.</div>
-      </div>
-      <div class="proj-meta">
-        <span class="proj-lang">Kafka · Python · BigQuery</span>
-        <span class="proj-arrow">→</span>
+        <div class="proj-footer">
+          <span class="proj-lang">Kafka · Python · BigQuery</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
     </a>
 
-    <a href="#" class="project-row">
-      <div class="proj-num">04</div>
-      <div class="proj-info">
-        <div class="proj-title">Public Dataset Benchmark Suite</div>
-        <div class="proj-desc">Open-source collection of 15 real-world dirty datasets with accompanying cleaning scripts, documented transformations, and quality metrics for learning and benchmarking.</div>
+    <!-- PROJECT 4 -->
+    <a href="#" class="project-card">
+      <div class="proj-img-wrap">
+        <!-- ✏️ Replace src with your image: src="images/project-4.png" -->
+        <img src="images/project-4.png"
+             alt="Public Dataset Benchmark Suite screenshot"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="proj-img-placeholder" style="display:none">
+          <span class="placeholder-icon">📦</span>
+          <span class="placeholder-label">project-4.png</span>
+        </div>
+        <span class="proj-num-badge">04</span>
       </div>
-      <div class="proj-meta">
-        <span class="proj-lang">Python · Jupyter · GitHub</span>
-        <span class="proj-arrow">→</span>
+      <div class="proj-body">
+        <div class="proj-title">Public Dataset Benchmark Suite</div>
+        <div class="proj-desc">Open-source collection of 15 real-world dirty datasets with accompanying cleaning scripts, documented transformations, and quality metrics for learning.</div>
+        <div class="proj-footer">
+          <span class="proj-lang">Python · Jupyter · GitHub</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
     </a>
+
   </div>
 </section>
 
@@ -871,7 +1029,7 @@
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Danielle Quiambao</span>
-  <span>Built with HTML · CSS · JS — No frameworks needed.</span>
+  <span>Built with HTML · CSS · JS.</span>
   <span style="color:var(--green);">Available for work ●</span>
 </footer>
 
